@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archetech.com/didcomm/cashu/1.0/token.schema.json",
+  "title": "DID-locked ecash token message body",
+  "type": "object",
+  "required": ["token"],
+  "properties": {
+    "token": {
+      "type": "string",
+      "pattern": "^cashu[AB]",
+      "description": "A Cashu token, whose proofs carry NUT-11 P2PK secrets."
+    },
+    "memo": {
+      "type": "string",
+      "description": "Text for the recipient."
+    }
+  }
+}

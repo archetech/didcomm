@@ -42,16 +42,10 @@ recipient MUST NOT treat `from` as the sender unless the envelope authenticates 
 
 ## Choosing a mint
 
-The recipient accepts a mint by listing it in a service of its DID document, of type
-`Cashu`, whose `serviceEndpoint` is an array of mint URLs:
-
-```json
-{ "id": "did:cid:recipient#cashu", "type": "Cashu", "serviceEndpoint": ["https://mint.example/cashu"] }
-```
-
-Unless told which mint to use, a sender MUST choose one the recipient lists. Accepting a
-mint's tokens means trusting that mint with the value, so a recipient MUST NOT contact a
-mint it has not accepted in order to redeem a token.
+The sender chooses the mint. Accepting a mint's tokens means trusting that mint with the
+value, so a recipient MUST NOT contact a mint it has not accepted in order to redeem a
+token. A recipient that does not accept the mint leaves the token unredeemed, and the
+sender can reclaim the value after the locktime.
 
 The sender MUST check that the mint advertises NUT-11 in its NUT-06 info, and MUST NOT
 send through a mint that does not, because such a mint may treat locked proofs as bearer
